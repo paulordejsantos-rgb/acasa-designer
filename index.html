@@ -1,0 +1,1515 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A Casa & Designer — Design de Interiores</title>
+  <link rel="icon" type="image/png" href="brasao.png" />
+  <link rel="apple-touch-icon" href="logo.png" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#C9A84C" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="ACD" />
+  <meta name="description" content="A Casa & Designer — Transformamos espaços em experiências únicas, com foco em acessibilidade, elegância e funcionalidade." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ouro: #C9A84C;
+      --ouro-claro: #E2C06A;
+      --ouro-escuro: #A07830;
+      --preto: #0A0A0A;
+      --preto-card: #111111;
+      --preto-medio: #1A1A1A;
+      --cinza-escuro: #222222;
+      --cinza-texto: #AAAAAA;
+      --branco: #F5F0E8;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      background-color: var(--preto);
+      color: var(--branco);
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    .main-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 5%;
+      flex-wrap: nowrap;
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(201,168,76,0.2);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: var(--ouro);
+      letter-spacing: 1px;
+      text-decoration: none;
+      white-space: nowrap;
+      margin-left: 20px;
+    }
+
+    .nav-logo span { color: var(--branco); }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--cinza-texto);
+      text-decoration: none;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover { color: var(--ouro); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 210px 5% 80px;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #0A0A0A 0%, #1A1208 50%, #0A0A0A 100%);
+    }
+
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 50% 40%, rgba(201,168,76,0.08) 0%, transparent 70%),
+        repeating-linear-gradient(45deg, transparent, transparent 60px, rgba(201,168,76,0.015) 60px, rgba(201,168,76,0.015) 61px);
+    }
+
+    .hero-content { position: relative; max-width: 800px; }
+
+    .hero-badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--ouro);
+      border: 1px solid rgba(201,168,76,0.4);
+      padding: 6px 20px;
+      border-radius: 2px;
+      margin-bottom: 28px;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--branco);
+      margin-bottom: 24px;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--ouro);
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--cinza-texto);
+      max-width: 560px;
+      margin: 0 auto 40px;
+      font-weight: 300;
+    }
+
+    .btn-group { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    .btn-primary {
+      background: var(--ouro);
+      color: var(--preto);
+      padding: 14px 36px;
+      border: none;
+      border-radius: 2px;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .btn-primary:hover { background: var(--ouro-claro); transform: translateY(-2px); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--ouro);
+      padding: 14px 36px;
+      border: 1px solid var(--ouro);
+      border-radius: 2px;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s, transform 0.2s;
+    }
+
+    .btn-outline:hover { background: rgba(201,168,76,0.1); transform: translateY(-2px); }
+
+    .hero-line {
+      width: 60px;
+      height: 2px;
+      background: var(--ouro);
+      margin: 48px auto 0;
+    }
+
+    /* ── SEÇÕES ── */
+    section { padding: 100px 5%; }
+
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--ouro);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 700;
+      color: var(--branco);
+      margin-bottom: 16px;
+    }
+
+    .section-desc {
+      color: var(--cinza-texto);
+      max-width: 540px;
+      font-weight: 300;
+    }
+
+    .divider {
+      width: 50px;
+      height: 2px;
+      background: var(--ouro);
+      margin: 20px 0 48px;
+    }
+
+    /* ── SOBRE ── */
+    #sobre { background: var(--preto-medio); }
+
+    .sobre-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .sobre-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .stat-box {
+      background: var(--cinza-escuro);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: 4px;
+      padding: 24px;
+      text-align: center;
+    }
+
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      color: var(--ouro);
+      font-weight: 700;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--cinza-texto);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-top: 6px;
+    }
+
+    .sobre-visual {
+      position: relative;
+      height: 420px;
+    }
+
+    .sobre-block {
+      position: absolute;
+      border-radius: 4px;
+    }
+
+    .sobre-block-1 {
+      inset: 0;
+      background: linear-gradient(135deg, var(--cinza-escuro), #1A1A0A);
+      border: 1px solid rgba(201,168,76,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .sobre-icon-wrap {
+      text-align: center;
+    }
+
+    .sobre-icon {
+      font-size: 5rem;
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+
+    .sobre-icon-text {
+      font-family: 'Playfair Display', serif;
+      color: var(--ouro);
+      font-size: 1.2rem;
+      letter-spacing: 2px;
+    }
+
+    .sobre-block-2 {
+      bottom: -20px;
+      right: -20px;
+      width: 100px;
+      height: 100px;
+      background: var(--ouro);
+      opacity: 0.08;
+    }
+
+    .sobre-block-3 {
+      top: -20px;
+      left: -20px;
+      width: 70px;
+      height: 70px;
+      border: 2px solid rgba(201,168,76,0.3);
+    }
+
+    /* ── PORTFÓLIO ── */
+    #portfolio { background: var(--preto); }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .portfolio-card {
+      background: var(--preto-card);
+      border: 1px solid rgba(201,168,76,0.15);
+      border-radius: 4px;
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .portfolio-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--ouro);
+      box-shadow: 0 20px 50px rgba(201,168,76,0.12);
+    }
+
+    .card-thumb {
+      height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-thumb-severize {
+      background: linear-gradient(135deg, #0D0D1A 0%, #1A1030 100%);
+    }
+
+    .card-thumb-pesosabor {
+      background: linear-gradient(135deg, #0D1A0D 0%, #1A3010 100%);
+    }
+
+    .card-thumb-pizzaria {
+      background: linear-gradient(135deg, #1A0800 0%, #3A1000 100%);
+    }
+
+    .card-thumb-hamburgueria {
+      background: linear-gradient(135deg, #1A0A00 0%, #2D1500 100%);
+    }
+
+    .card-thumb-lnseminovos {
+      background: linear-gradient(135deg, #070B12 0%, #0C1830 100%);
+    }
+
+    .card-thumb::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
+    }
+
+    .card-thumb-label {
+      position: absolute;
+      bottom: 14px;
+      left: 14px;
+      z-index: 1;
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--ouro);
+      background: rgba(10,10,10,0.7);
+      padding: 4px 10px;
+      border-radius: 2px;
+    }
+
+    .card-body { padding: 24px; flex: 1; display: flex; flex-direction: column; }
+
+    .card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: var(--branco);
+      margin-bottom: 10px;
+    }
+
+    .card-desc {
+      font-size: 0.9rem;
+      color: var(--cinza-texto);
+      font-weight: 300;
+      flex: 1;
+      margin-bottom: 20px;
+    }
+
+    .card-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--ouro);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .card-link svg { transition: transform 0.3s; }
+    .portfolio-card:hover .card-link svg { transform: translateX(4px); }
+
+    /* ── DEPOIMENTOS ── */
+    #depoimentos { background: var(--preto); }
+
+    .depoimentos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 28px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .depoimento-card {
+      background: var(--preto-card);
+      border: 1px solid rgba(201,168,76,0.18);
+      border-radius: 4px;
+      padding: 36px 32px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      position: relative;
+      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    }
+
+    .depoimento-card:hover {
+      border-color: var(--ouro);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 50px rgba(201,168,76,0.1);
+    }
+
+    .depoimento-aspas {
+      position: absolute;
+      top: 24px;
+      right: 28px;
+      font-family: 'Playfair Display', serif;
+      font-size: 5rem;
+      line-height: 1;
+      color: rgba(201,168,76,0.12);
+      font-weight: 700;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .depoimento-estrelas {
+      display: flex;
+      gap: 4px;
+    }
+
+    .estrela {
+      color: var(--ouro);
+      font-size: 1rem;
+    }
+
+    .depoimento-texto {
+      font-size: 0.97rem;
+      color: #C8C0B0;
+      font-weight: 300;
+      line-height: 1.8;
+      font-style: italic;
+      flex: 1;
+    }
+
+    .depoimento-autor {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      border-top: 1px solid rgba(201,168,76,0.15);
+      padding-top: 20px;
+    }
+
+    .avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      border: 2px solid rgba(201,168,76,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+      font-weight: 700;
+      font-family: 'Playfair Display', serif;
+      color: var(--ouro);
+    }
+
+    .avatar-ricardo { background: linear-gradient(135deg, #1A1208, #2A1E0A); }
+    .avatar-fernanda { background: linear-gradient(135deg, #12101A, #1E1228); }
+    .avatar-joao    { background: linear-gradient(135deg, #0D1A0D, #142010); }
+
+    .autor-nome {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      color: var(--branco);
+      font-weight: 600;
+    }
+
+    .autor-cargo {
+      font-size: 0.78rem;
+      color: var(--ouro);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    /* ── DIFERENCIAIS ── */
+    #diferenciais { background: var(--preto-medio); }
+
+    .diferenciais-intro {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .diferenciais-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      margin-top: 0;
+      max-width: 1100px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .diferencial-card {
+      background: var(--cinza-escuro);
+      border: 1px solid rgba(201,168,76,0.15);
+      border-radius: 4px;
+      padding: 32px 28px;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .diferencial-card:hover {
+      border-color: rgba(201,168,76,0.5);
+      transform: translateY(-4px);
+    }
+
+    .diferencial-icon {
+      font-size: 2.2rem;
+      margin-bottom: 16px;
+    }
+
+    .diferencial-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--ouro);
+      margin-bottom: 10px;
+    }
+
+    .diferencial-desc {
+      font-size: 0.9rem;
+      color: var(--cinza-texto);
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    /* ── CONTATO ── */
+    #contato { background: var(--preto); }
+
+    .contato-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .contato-info { }
+
+    .contato-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .contato-item-icon {
+      width: 44px;
+      height: 44px;
+      background: rgba(201,168,76,0.1);
+      border: 1px solid rgba(201,168,76,0.3);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .contato-item-label {
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--ouro);
+      margin-bottom: 4px;
+    }
+
+    .contato-item-value {
+      color: var(--branco);
+      font-size: 1rem;
+      text-decoration: none;
+      transition: color 0.3s;
+      word-break: break-all;
+      overflow-wrap: anywhere;
+    }
+
+    .contato-item-value:hover { color: var(--ouro); }
+
+    .contato-form {
+      background: var(--preto-card);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: 4px;
+      padding: 40px;
+    }
+
+    .form-group { margin-bottom: 20px; }
+
+    .form-group label {
+      display: block;
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--ouro);
+      margin-bottom: 8px;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      background: var(--cinza-escuro);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: 2px;
+      color: var(--branco);
+      padding: 12px 16px;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.95rem;
+      transition: border-color 0.3s;
+      outline: none;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--ouro);
+    }
+
+    .form-group select option { background: var(--cinza-escuro); }
+
+    .form-group textarea { resize: vertical; min-height: 120px; }
+
+    /* ── RODAPÉ ── */
+    footer {
+      background: var(--preto-medio);
+      border-top: 1px solid rgba(201,168,76,0.2);
+      padding: 48px 5% 32px;
+      text-align: center;
+      position: relative;
+    }
+
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      color: var(--ouro);
+      margin-bottom: 8px;
+    }
+
+    .footer-logo span { color: var(--branco); }
+
+    .footer-tagline {
+      font-size: 0.85rem;
+      color: var(--cinza-texto);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 32px;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+    }
+
+    .footer-links a {
+      color: var(--cinza-texto);
+      text-decoration: none;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover { color: var(--ouro); }
+
+    .footer-line {
+      width: 50px;
+      height: 1px;
+      background: rgba(201,168,76,0.3);
+      margin: 0 auto 24px;
+    }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 24px;
+    }
+
+    .footer-social {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .footer-instagram {
+      color: var(--cinza-texto);
+      transition: color 0.3s;
+      display: flex;
+      align-items: center;
+    }
+
+    .footer-instagram:hover { color: var(--ouro); }
+
+    .footer-copy {
+      font-size: 0.8rem;
+      color: var(--cinza-texto);
+      line-height: 1.8;
+      text-align: right;
+    }
+
+    .footer-copy strong { color: var(--ouro); }
+
+    /* ── BOTÕES DE NAVEGAÇÃO FLUTUANTES ── */
+    .scroll-nav {
+      position: fixed;
+      right: 28px;
+      bottom: 100px;
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .scroll-nav-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(201,168,76,0.15);
+      border: 1.5px solid var(--ouro);
+      color: var(--ouro);
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+      backdrop-filter: blur(6px);
+    }
+    .scroll-nav-btn:hover { background: rgba(201,168,76,0.3); transform: scale(1.1); }
+    .scroll-nav-btn:active { transform: scale(0.95); }
+
+    /* ── WHATSAPP FLUTUANTE ── */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 999;
+      width: 58px;
+      height: 58px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+      text-decoration: none;
+      transition: transform 0.3s, box-shadow 0.3s;
+      animation: pulseWA 2.5s infinite;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 28px rgba(37,211,102,0.6);
+    }
+
+    .whatsapp-float svg { width: 30px; height: 30px; fill: white; }
+
+    @keyframes pulseWA {
+      0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.4); }
+      50% { box-shadow: 0 4px 30px rgba(37,211,102,0.7), 0 0 0 8px rgba(37,211,102,0.1); }
+    }
+
+    /* ── FAQ ── */
+    #faq { background: var(--preto-medio); }
+
+    .faq-list { display: flex; flex-direction: column; gap: 12px; }
+
+    .faq-item {
+      background: var(--cinza-escuro);
+      border: 1px solid rgba(201,168,76,0.18);
+      border-radius: 4px;
+      overflow: hidden;
+      transition: border-color 0.3s;
+    }
+
+    .faq-item.faq-open { border-color: rgba(201,168,76,0.5); }
+
+    .faq-question {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 22px 28px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      color: var(--branco);
+      text-align: left;
+      transition: color 0.3s;
+    }
+
+    .faq-item.faq-open .faq-question { color: var(--ouro); }
+
+    .faq-icon {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      border: 1px solid rgba(201,168,76,0.4);
+      border-radius: 50%;
+      position: relative;
+      transition: background 0.3s, border-color 0.3s;
+    }
+
+    .faq-icon::before,
+    .faq-icon::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      background: var(--ouro);
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    .faq-icon::before {
+      width: 10px;
+      height: 1.5px;
+      transform: translate(-50%, -50%);
+    }
+
+    .faq-icon::after {
+      width: 1.5px;
+      height: 10px;
+      transform: translate(-50%, -50%);
+    }
+
+    .faq-item.faq-open .faq-icon {
+      background: rgba(201,168,76,0.1);
+      border-color: var(--ouro);
+    }
+
+    .faq-item.faq-open .faq-icon::after {
+      transform: translate(-50%, -50%) rotate(90deg);
+      opacity: 0;
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.4s ease;
+      color: var(--cinza-texto);
+      font-size: 0.95rem;
+      font-weight: 300;
+      line-height: 1.8;
+      padding: 0 28px;
+    }
+
+    .faq-item.faq-open .faq-answer {
+      max-height: 300px;
+      padding: 0 28px 24px;
+    }
+
+    .faq-answer strong { color: var(--ouro-claro); font-weight: 700; }
+
+    /* ── RESPONSIVO ── */
+    @media (max-width: 768px) {
+      .main-nav { padding: 16px 5%; }
+      .nav-links { display: none; }
+
+      .sobre-grid,
+      .contato-wrap { grid-template-columns: 1fr; gap: 40px; }
+
+      .sobre-visual { height: 280px; }
+
+      .portfolio-grid { grid-template-columns: 1fr; }
+
+      .btn-group { flex-direction: column; align-items: center; }
+
+      .contato-form { padding: 28px 20px; }
+
+      section { padding: 72px 5%; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="main-nav" aria-label="Navegação principal">
+    <a href="#hero" class="nav-logo">
+      <img src="logo.png" alt="Logo A Casa & Designer" style="height:180px;width:auto;vertical-align:middle;margin-right:8px;" />A Casa<span> & Designer</span>
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#portfolio">Portfólio</a></li>
+      <li><a href="#depoimentos">Depoimentos</a></li>
+      <li><a href="#diferenciais">Diferenciais</a></li>
+      <li><a href="#contato">Contato</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero" aria-label="Apresentação">
+    <div class="hero-content">
+      <span class="hero-badge">Design de Interiores & Acessibilidade</span>
+      <h1 class="hero-title">
+        Espaços que <em>inspiram,</em><br>ambientes que acolhem
+      </h1>
+      <p class="hero-sub">
+        Transformamos residências e estabelecimentos em lugares de beleza, conforto e total acessibilidade — para todos.
+      </p>
+      <div class="btn-group">
+        <a href="#portfolio" class="btn-primary">Ver Portfólio</a>
+        <a href="#contato" class="btn-outline">Fale Conosco</a>
+      </div>
+      <div class="hero-line" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- SOBRE -->
+  <section id="sobre" aria-labelledby="sobre-titulo">
+    <div class="sobre-grid">
+      <div>
+        <p class="section-label">Quem somos</p>
+        <h2 class="section-title" id="sobre-titulo">Design com propósito e elegância</h2>
+        <div class="divider" aria-hidden="true"></div>
+        <p class="section-desc">
+          A Casa &amp; Designer nasceu da paixão por criar ambientes que unem estética refinada e funcionalidade real. Trabalhamos com cada cliente para desenvolver projetos únicos, onde o dourado e o sofisticado coexistem com o acolhimento e a acessibilidade.
+        </p>
+        <div class="sobre-stats" role="list" aria-label="Estatísticas">
+          <div class="stat-box" role="listitem">
+            <div class="stat-num">+120</div>
+            <div class="stat-label">Projetos Entregues</div>
+          </div>
+          <div class="stat-box" role="listitem">
+            <div class="stat-num">10+</div>
+            <div class="stat-label">Anos de Experiência</div>
+          </div>
+          <div class="stat-box" role="listitem">
+            <div class="stat-num">100%</div>
+            <div class="stat-label">Satisfação Garantida</div>
+          </div>
+          <div class="stat-box" role="listitem">
+            <div class="stat-num">RJ</div>
+            <div class="stat-label">Baseados no Rio</div>
+          </div>
+        </div>
+      </div>
+      <div class="sobre-visual" aria-hidden="true">
+        <div class="sobre-block sobre-block-1">
+          <div class="sobre-icon-wrap">
+            <img src="logo.png" alt="Logo A Casa & Designer" style="height:120px;width:auto;display:block;margin:0 auto 16px;" />
+            <div class="sobre-icon-text">A Casa & Designer</div>
+          </div>
+        </div>
+        <div class="sobre-block sobre-block-2"></div>
+        <div class="sobre-block sobre-block-3"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFÓLIO -->
+  <section id="portfolio" aria-labelledby="portfolio-titulo">
+    <div style="max-width:1100px;margin:0 auto">
+      <p class="section-label">Nossos Projetos</p>
+      <h2 class="section-title" id="portfolio-titulo">Portfólio Selecionado</h2>
+      <div class="divider" aria-hidden="true"></div>
+      <p class="section-desc" style="margin-bottom:48px">
+        Cada projeto conta uma história. Conheça alguns dos ambientes que ajudamos a transformar.
+      </p>
+      <div class="portfolio-grid">
+
+        <!-- Card 1 -->
+        <a href="https://projeto-severize.vercel.app" target="_blank" rel="noopener noreferrer" class="portfolio-card" aria-label="Ver cardápio Bistrô Designer — abre em nova aba">
+          <div class="card-thumb card-thumb-severize" style="padding:0;overflow:hidden;">
+            <img src="restaurante.jpg" alt="Cardápio Bistrô Designer" style="width:100%;height:100%;object-fit:cover;display:block;" />
+            <span class="card-thumb-label">Cardápio Digital</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Bistrô Designer</h3>
+            <p class="card-desc">
+              Cardápio digital para restaurante fino com categorias de pratos, sistema de pedidos, chamada de garçom, divisão e fechamento de conta. Identidade visual em dourado.
+            </p>
+            <span class="card-link">
+              Ver Cardápio
+              <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </span>
+          </div>
+        </a>
+
+        <!-- Card 2 -->
+        <a href="https://peso-e-sabor.vercel.app" target="_blank" rel="noopener noreferrer" class="portfolio-card" aria-label="Ver cardápio Peso &amp; Sabor — abre em nova aba">
+          <div class="card-thumb card-thumb-pesosabor" style="padding:0;overflow:hidden;">
+            <img src="gastronomia.jpg" alt="Cardápio Peso e Sabor" style="width:100%;height:100%;object-fit:cover;display:block;" />
+            <span class="card-thumb-label">Cardápio Digital</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Peso &amp; Sabor</h3>
+            <p class="card-desc">
+              Cardápio digital para buffet por quilo com painel de mesas, faturamento diário, chamada de garçom, divisão e pagamento de conta. Interface limpa e funcional.
+            </p>
+            <span class="card-link">
+              Ver Cardápio
+              <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </span>
+          </div>
+        </a>
+
+        <!-- Card 3 -->
+        <a href="https://acd-pizzaria-premium.vercel.app" target="_blank" rel="noopener noreferrer" class="portfolio-card" aria-label="Ver cardápio ACD Pizzaria Premium — abre em nova aba">
+          <div class="card-thumb card-thumb-pizzaria" style="padding:0;overflow:hidden;">
+            <img src="pizzaria.png" alt="Cardápio ACD Pizzaria Premium" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy" />
+            <span class="card-thumb-label">Cardápio Digital</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">ACD Pizzaria Premium</h3>
+            <p class="card-desc">
+              Cardápio digital premium com seções de pizzas, bebidas e sobremesas. Sistema completo com pedidos, filtros por tamanho e total acessibilidade.
+            </p>
+            <span class="card-link">
+              Ver Cardápio
+              <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </span>
+          </div>
+        </a>
+
+        <!-- Card 4 -->
+        <a href="https://projeto-hamburgueria-gules.vercel.app" target="_blank" rel="noopener noreferrer" class="portfolio-card" aria-label="Ver cardápio The Burger Foundry — abre em nova aba">
+          <div class="card-thumb card-thumb-hamburgueria" style="padding:0;overflow:hidden;">
+            <img src="hamburgueria.webp" alt="Cardápio The Burger Foundry" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy" />
+            <span class="card-thumb-label">Cardápio Digital</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">The Burger Foundry</h3>
+            <p class="card-desc">
+              Cardápio digital artesanal para hamburgueria premium com seleção de tamanhos, sistema de pedidos, chamada de garçom, divisão de conta e avaliação pós-pedido.
+            </p>
+            <span class="card-link">
+              Ver Cardápio
+              <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- DEPOIMENTOS -->
+  <section id="depoimentos" aria-labelledby="depoimentos-titulo">
+    <div style="max-width:1100px;margin:0 auto">
+      <p class="section-label">O que dizem nossos clientes</p>
+      <h2 class="section-title" id="depoimentos-titulo">Depoimentos</h2>
+      <div class="divider" aria-hidden="true"></div>
+      <p class="section-desc" style="margin-bottom:48px">
+        A satisfação de quem confiou no nosso trabalho é a nossa maior conquista.
+      </p>
+      <div class="depoimentos-grid">
+
+        <!-- Depoimento 1 -->
+        <article class="depoimento-card" aria-label="Depoimento de Ricardo Mendes">
+          <span class="depoimento-aspas" aria-hidden="true">"</span>
+          <div class="depoimento-estrelas" aria-label="5 estrelas">
+            <span class="estrela" aria-hidden="true">★</span>
+            <span class="estrela" aria-hidden="true">★</span>
+            <span class="estrela" aria-hidden="true">★</span>
+            <span class="estrela" aria-hidden="true">★</span>
+            <span class="estrela" aria-hidden="true">★</span>
+          </div>
+          <p class="depoimento-texto">
+            "O cardápio digital transformou meu atendimento. Os clientes adoram a narração por voz e a divisão de conta. Faturamento aumentou 25% no primeiro mês."
+          </p>
+          <div class="depoimento-autor">
+            <div class="avatar avatar-ricardo" aria-hidden="true">RM</div>
+            <div>
+              <div class="autor-nome">Ricardo Mendes</div>
+              <div class="autor-cargo">Dono — Bistrô Carioca</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Depoimento 2 -->
+        <article class="depoimento-card" aria-label="Depoimento de Fernanda Oliveira">
+          <span class="depoimento-aspas" aria-hidden="true">"</span>
+          <div class="depoimento-estrelas" aria-label="5 estrelas">
+            <span class="estrela" aria-hidden="true">★</span>
+            <span class="estrela" aria-hidden="true">★</span>
+            <span class="estrela" aria-hidden="true">★</span>
+            <span class="estrela" aria-hidden="true">★</span>
+            <span class="estrela" aria-hidden="true">★</span>
+          </div>
+          <p class="depoimento-texto">
+            "Profissionalismo impecável. O sistema é lindo, fácil de usar e meus clientes com deficiência visual se sentiram incluídos pela primeira vez."
+          </p>
+          <div class="depoimento-autor">
+            <div class="avatar avatar-fernanda" aria-hidden="true">FO</div>
+            <div>
+              <div class="autor-nome">Fernanda Oliveira</div>
+              <div class="autor-cargo">Gerente — Sabor & Arte</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Depoimento 3 -->
+        <article class="depoimento-card" aria-label="Depoimento de João Carlos Silva">
+          <span class="depoimento-aspas" aria-hidden="true">"</span>
+          <div class="depoimento-estrelas" aria-label="5 estrelas">
+            <span class="estrela" aria-hidden="true">★</span>
+            <span class="estrela" aria-hidden="true">★</span>
+            <span class="estrela" aria-hidden="true">★</span>
+            <span class="estrela" aria-hidden="true">★</span>
+            <span class="estrela" aria-hidden="true">★</span>
+          </div>
+          <p class="depoimento-texto">
+            "Investimento que se pagou em 2 semanas. O QR Code nas mesas modernizou tudo. Recomendo sem hesitar."
+          </p>
+          <div class="depoimento-autor">
+            <div class="avatar avatar-joao" aria-hidden="true">JC</div>
+            <div>
+              <div class="autor-nome">João Carlos Silva</div>
+              <div class="autor-cargo">Dono — Pizzaria Bella Napoli</div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- DIFERENCIAIS DE ACESSIBILIDADE -->
+  <section id="diferenciais" aria-labelledby="diferenciais-titulo">
+    <div class="diferenciais-intro">
+      <p class="section-label">Por que nos escolher</p>
+      <h2 class="section-title" id="diferenciais-titulo">Nossos Diferenciais de Acessibilidade</h2>
+      <div class="divider" aria-hidden="true"></div>
+      <p class="section-desc" style="margin-bottom:48px">
+        Acreditamos que design de qualidade deve ser acessível a todos — independentemente de mobilidade, visão ou qualquer limitação. Integramos as normas da ABNT NBR 9050 em cada projeto.
+      </p>
+    </div>
+    <div class="diferenciais-grid">
+      <article class="diferencial-card">
+        <div class="diferencial-icon" aria-hidden="true">♿</div>
+        <h3 class="diferencial-title">Mobilidade Ampliada</h3>
+        <p class="diferencial-desc">Circulações dimensionadas para cadeirantes, corrimãos e pisos táteis integrados ao design, sem abrir mão da estética.</p>
+      </article>
+      <article class="diferencial-card">
+        <div class="diferencial-icon" aria-hidden="true">💡</div>
+        <h3 class="diferencial-title">Iluminação Inclusiva</h3>
+        <p class="diferencial-desc">Projetos luminotécnicos que respeitam as necessidades de pessoas com baixa visão — sem ofuscamento e com contraste adequado.</p>
+      </article>
+      <article class="diferencial-card">
+        <div class="diferencial-icon" aria-hidden="true">🔊</div>
+        <h3 class="diferencial-title">Acústica Humanizada</h3>
+        <p class="diferencial-desc">Tratamentos acústicos que beneficiam usuários de aparelhos auditivos e criam ambientes de convivência mais harmoniosos para todos.</p>
+      </article>
+      <article class="diferencial-card">
+        <div class="diferencial-icon" aria-hidden="true">📐</div>
+        <h3 class="diferencial-title">Norma ABNT NBR 9050</h3>
+        <p class="diferencial-desc">Projetos elaborados em conformidade com a norma brasileira de acessibilidade em edificações, mobiliário e espaços urbanos.</p>
+      </article>
+      <article class="diferencial-card">
+        <div class="diferencial-icon" aria-hidden="true">🏆</div>
+        <h3 class="diferencial-title">Design Universal</h3>
+        <p class="diferencial-desc">Soluções pensadas para todas as idades e perfis: crianças, idosos, gestantes e pessoas com deficiência têm sua autonomia garantida.</p>
+      </article>
+      <article class="diferencial-card">
+        <div class="diferencial-icon" aria-hidden="true">✅</div>
+        <h3 class="diferencial-title">Consultoria Especializada</h3>
+        <p class="diferencial-desc">Acompanhamento técnico do projeto à entrega, com laudo de acessibilidade e orientação para adequação de espaços já existentes.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section id="contato" aria-labelledby="contato-titulo">
+    <div class="contato-wrap">
+      <div class="contato-info">
+        <p class="section-label">Fale Conosco</p>
+        <h2 class="section-title" id="contato-titulo">Vamos criar algo incrível juntos</h2>
+        <div class="divider" aria-hidden="true"></div>
+        <p class="section-desc" style="margin-bottom:40px">
+          Entre em contato para um orçamento gratuito. Atendemos projetos residenciais, comerciais e institucionais no Rio de Janeiro e região.
+        </p>
+
+        <div class="contato-item">
+          <div class="contato-item-icon" aria-hidden="true">📱</div>
+          <div>
+            <div class="contato-item-label">WhatsApp</div>
+            <a href="https://wa.me/5521990980965" class="contato-item-value" target="_blank" rel="noopener noreferrer" aria-label="Enviar mensagem no WhatsApp para (21) 99098-0965">
+              (21) 99098-0965
+            </a>
+          </div>
+        </div>
+
+        <div class="contato-item">
+          <div class="contato-item-icon" aria-hidden="true">✉️</div>
+          <div>
+            <div class="contato-item-label">E-mail</div>
+            <a href="mailto:contato@acasaedesigner.com" class="contato-item-value" aria-label="Enviar e-mail para contato@acasaedesigner.com">
+              contato@acasaedesigner.com
+            </a>
+          </div>
+        </div>
+
+        <div class="contato-item">
+          <div class="contato-item-icon" aria-hidden="true">📍</div>
+          <div>
+            <div class="contato-item-label">Localização</div>
+            <span class="contato-item-value">Rio de Janeiro — RJ</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="contato-form">
+        <form onsubmit="enviarEmail(event)" novalidate aria-label="Formulário de contato">
+          <div class="form-group">
+            <label for="nome">Seu Nome</label>
+            <input type="text" id="nome" name="nome" placeholder="Como podemos te chamar?" required autocomplete="name" />
+          </div>
+          <div class="form-group">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" placeholder="seu@email.com" required autocomplete="email" />
+          </div>
+          <div class="form-group">
+            <label for="tipo">Tipo de Projeto</label>
+            <select id="tipo" name="tipo" required>
+              <option value="" disabled selected>Selecione o tipo</option>
+              <option value="Comercial">Comercial</option>
+              <option value="Institucional">Institucional</option>
+              <option value="Consultoria de Acessibilidade">Consultoria de Acessibilidade</option>
+              <option value="Outro">Outro</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="mensagem">Mensagem</label>
+            <textarea id="mensagem" name="mensagem" placeholder="Conte um pouco sobre o seu projeto..." required></textarea>
+          </div>
+          <button type="submit" id="form-btn" class="btn-primary" style="width:100%">Enviar Mensagem</button>
+          <div id="form-feedback" role="alert" aria-live="polite" style="display:none;margin-top:16px;padding:14px 18px;border-radius:4px;font-size:0.9rem;text-align:center;"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" aria-labelledby="faq-titulo">
+    <div style="max-width:800px;margin:0 auto">
+      <p class="section-label">Dúvidas Frequentes</p>
+      <h2 class="section-title" id="faq-titulo">Perguntas Frequentes</h2>
+      <div class="divider" aria-hidden="true"></div>
+      <p class="section-desc" style="margin-bottom:48px">
+        Tudo o que você precisa saber antes de contratar o Cardápio Digital Interativo.
+      </p>
+      <div class="faq-list">
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq-r1">
+            Quanto custa o cardápio digital?
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-answer" id="faq-r1" role="region">
+            Oferecemos 3 pacotes: <strong>Básico</strong> — Cardápio digital simples e funcional. <strong>Standard</strong> — Com narração por voz em português. <strong>Premium</strong> — Com narração + vídeos em Libras para inclusão de clientes surdos. Cada pacote tem um investimento diferente. Entre em contato para um orçamento personalizado e gratuito.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq-r2">
+            Precisa instalar algum aplicativo?
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-answer" id="faq-r2" role="region">
+            Não. O cardápio funciona diretamente no navegador do celular, tablet ou computador — basta apontar para o QR Code na mesa. Nenhum app para baixar, nem para o restaurante nem para o cliente.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq-r3">
+            Como funciona o suporte?
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-answer" id="faq-r3" role="region">
+            Suporte via WhatsApp em horário comercial, com resposta em até 2 horas em casos urgentes. Atualizações do sistema são automáticas e sem custo adicional — você nunca fica desatualizado.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq-r4">
+            Posso atualizar os preços e pratos?
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-answer" id="faq-r4" role="region">
+            Sim, você mesmo! Pelo painel de gestão é possível adicionar, remover ou editar pratos, preços e fotos a qualquer momento — sem precisar de técnico e sem custo extra por alteração.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq-r5">
+            Funciona em qualquer celular?
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-answer" id="faq-r5" role="region">
+            Sim. O sistema é totalmente responsivo e roda em qualquer dispositivo com navegador moderno: iPhone, Android, tablets e computadores. E ainda conta com <strong>narração por voz</strong>, garantindo autonomia a clientes com deficiência visual.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- RODAPÉ -->
+  <footer>
+    <img src="logo.png" alt="Logo A Casa & Designer" style="height:80px;width:auto;display:block;margin:0 auto 12px;" />
+    <div class="footer-logo">A Casa<span> & Designer</span></div>
+    <p class="footer-tagline">Design de Interiores & Acessibilidade</p>
+    <nav class="footer-links" aria-label="Links do rodapé">
+      <a href="#sobre">Sobre</a>
+      <a href="#portfolio">Portfólio</a>
+      <a href="#depoimentos">Depoimentos</a>
+      <a href="#diferenciais">Diferenciais</a>
+      <a href="#contato">Contato</a>
+      <a href="#faq">FAQ</a>
+      <a href="mailto:contato@acasaedesigner.com">E-mail</a>
+    </nav>
+    <div class="footer-bottom">
+      <div class="footer-social">
+      <a href="https://wa.me/5521990980965" target="_blank" rel="noopener noreferrer" class="footer-instagram" aria-label="WhatsApp A Casa & Designer">
+        <svg xmlns="http://www.w3.org/2000/svg" width="33" height="33" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+          <path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.979-1.404A9.953 9.953 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a7.946 7.946 0 01-4.274-1.244l-.306-.181-3.167.893.899-3.086-.198-.317A7.948 7.948 0 014 12c0-4.418 3.582-8 8-8s8 3.582 8 8-3.582 8-8 8z"/>
+        </svg>
+      </a>
+      <a href="https://www.instagram.com/direct/inbox/" target="_blank" rel="noopener noreferrer" class="footer-instagram" aria-label="Instagram A Casa & Designer">
+        <svg xmlns="http://www.w3.org/2000/svg" width="33" height="33" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
+        </svg>
+      </a>
+      </div>
+      <p class="footer-copy">
+        &copy; 2026 <strong>A Casa &amp; Designer</strong>. Todos os direitos reservados.<br />
+        Desenvolvido por <strong>Paulo Roberto de Jesus Santos</strong> — Rio de Janeiro, RJ.
+      </p>
+    </div>
+  </footer>
+
+  <!-- BOTÃO FLUTUANTE WHATSAPP -->
+  <a
+    href="https://wa.me/5521990980965?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20os%20projetos%20da%20A%20Casa%20%26%20Designer."
+    class="whatsapp-float"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Falar no WhatsApp com A Casa & Designer"
+    title="Falar no WhatsApp"
+  >
+    <svg viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+      <path d="M16 1C7.716 1 1 7.716 1 16c0 2.628.676 5.1 1.856 7.253L1 31l7.953-1.831A14.938 14.938 0 0016 31c8.284 0 15-6.716 15-15S24.284 1 16 1zm0 27.5a12.44 12.44 0 01-6.337-1.727l-.453-.27-4.72 1.088 1.116-4.596-.296-.47A12.448 12.448 0 013.5 16C3.5 9.096 9.096 3.5 16 3.5S28.5 9.096 28.5 16 22.904 28.5 16 28.5zm6.844-9.305c-.375-.187-2.219-1.094-2.563-1.219-.343-.125-.593-.187-.843.188s-.969 1.219-1.188 1.469c-.218.25-.437.281-.812.094-.375-.188-1.582-.583-3.014-1.856-1.113-.992-1.864-2.217-2.083-2.592-.218-.375-.023-.578.164-.764.168-.168.375-.437.563-.656.187-.218.25-.375.375-.625.124-.25.062-.469-.032-.656-.093-.188-.843-2.031-1.156-2.781-.305-.727-.613-.629-.843-.64l-.719-.013c-.25 0-.656.094-.999.469s-1.312 1.281-1.312 3.125 1.343 3.625 1.531 3.875c.187.25 2.644 4.038 6.406 5.663.895.386 1.594.617 2.138.79.898.285 1.715.245 2.361.149.72-.108 2.219-.907 2.532-1.782.312-.875.312-1.625.218-1.782-.093-.156-.343-.25-.718-.437z"/>
+    </svg>
+  </a>
+
+  <!-- VLIBRAS -->
+  <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>new window.VLibras.Widget('https://vlibras.gov.br/app');</script>
+
+  <!-- BOTÕES FLUTUANTES DE NAVEGAÇÃO -->
+  <div class="scroll-nav" role="navigation" aria-label="Navegação rápida">
+    <button class="scroll-nav-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Ir para o topo">↑</button>
+    <button class="scroll-nav-btn" onclick="window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'})" aria-label="Ir para o final">↓</button>
+  </div>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('./sw.js');
+      });
+    }
+  </script>
+
+  <script>
+    document.querySelectorAll('.faq-question').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var item = btn.closest('.faq-item');
+        var isOpen = item.classList.contains('faq-open');
+        document.querySelectorAll('.faq-item').forEach(function(el) {
+          el.classList.remove('faq-open');
+          el.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        });
+        if (!isOpen) {
+          item.classList.add('faq-open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    async function enviarEmail(e) {
+      e.preventDefault();
+      const nome = document.getElementById('nome').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const tipo = document.getElementById('tipo').value;
+      const mensagem = document.getElementById('mensagem').value.trim();
+      const btn = document.getElementById('form-btn');
+      const feedback = document.getElementById('form-feedback');
+
+      if (!nome || !email || !tipo || !mensagem) {
+        feedback.style.display = 'block';
+        feedback.style.background = 'rgba(200,50,50,0.12)';
+        feedback.style.border = '1px solid rgba(200,50,50,0.4)';
+        feedback.style.color = '#f08080';
+        feedback.textContent = 'Por favor, preencha todos os campos.';
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = 'Enviando…';
+      feedback.style.display = 'none';
+
+      try {
+        const res = await fetch('https://formspree.io/f/xkoeyjez', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({ nome, email, 'tipo-de-projeto': tipo, mensagem })
+        });
+
+        if (res.ok) {
+          e.target.reset();
+          btn.textContent = 'Mensagem enviada!';
+          feedback.style.display = 'block';
+          feedback.style.background = 'rgba(201,168,76,0.1)';
+          feedback.style.border = '1px solid rgba(201,168,76,0.4)';
+          feedback.style.color = '#C9A84C';
+          feedback.textContent = 'Mensagem enviada com sucesso! Retornaremos em breve.';
+          setTimeout(function() { btn.disabled = false; btn.textContent = 'Enviar Mensagem'; }, 4000);
+        } else {
+          const data = await res.json().catch(function() { return {}; });
+          throw new Error(data.error || 'Erro ao enviar');
+        }
+      } catch (err) {
+        btn.disabled = false;
+        btn.textContent = 'Enviar Mensagem';
+        feedback.style.display = 'block';
+        feedback.style.background = 'rgba(200,50,50,0.12)';
+        feedback.style.border = '1px solid rgba(200,50,50,0.4)';
+        feedback.style.color = '#f08080';
+        feedback.textContent = 'Erro ao enviar a mensagem. Tente novamente ou entre em contato pelo WhatsApp.';
+      }
+    }
+  </script>
+
+</body>
+</html>

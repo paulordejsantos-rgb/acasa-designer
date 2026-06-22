@@ -82,6 +82,9 @@
       letter-spacing: 1px;
       text-transform: uppercase;
       transition: color 0.3s;
+      display: inline-flex;
+      align-items: center;
+      min-height: 54px;
     }
 
     .nav-links a:hover { color: var(--ouro); }
@@ -150,6 +153,10 @@
       background: var(--ouro);
       color: var(--preto);
       padding: 14px 36px;
+      min-height: 54px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       border: none;
       border-radius: 2px;
       font-family: 'Lato', sans-serif;
@@ -168,6 +175,10 @@
       background: transparent;
       color: var(--ouro);
       padding: 14px 36px;
+      min-height: 54px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       border: 1px solid var(--ouro);
       border-radius: 2px;
       font-family: 'Lato', sans-serif;
@@ -746,6 +757,9 @@
       transition: color 0.3s;
       display: flex;
       align-items: center;
+      justify-content: center;
+      min-width: 54px;
+      min-height: 54px;
     }
 
     .footer-instagram:hover { color: var(--ouro); }
@@ -770,8 +784,8 @@
       gap: 8px;
     }
     .scroll-nav-btn {
-      width: 44px;
-      height: 44px;
+      width: 54px;
+      height: 54px;
       border-radius: 50%;
       background: rgba(201,168,76,0.15);
       border: 1.5px solid var(--ouro);
@@ -912,6 +926,25 @@
 
     .faq-answer strong { color: var(--ouro-claro); font-weight: 700; }
 
+    /* ── SKIP LINK ── */
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: 8px;
+      background: var(--ouro);
+      color: var(--preto);
+      padding: 12px 24px;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-decoration: none;
+      border-radius: 0 0 4px 4px;
+      z-index: 9999;
+      transition: top 0.2s;
+    }
+    .skip-link:focus { top: 0; outline: 3px solid var(--preto); outline-offset: 2px; }
+
     /* ── RESPONSIVO ── */
     @media (max-width: 768px) {
       .main-nav { padding: 16px 5%; }
@@ -934,6 +967,8 @@
 </head>
 <body>
 
+  <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
+
   <!-- NAV -->
   <nav class="main-nav" aria-label="Navegação principal">
     <a href="#hero" class="nav-logo">
@@ -949,6 +984,8 @@
     </ul>
   </nav>
 
+  <main id="main-content">
+
   <!-- HERO -->
   <section id="hero" aria-label="Apresentação">
     <div class="hero-content">
@@ -960,8 +997,8 @@
         Transformamos residências e estabelecimentos em lugares de beleza, conforto e total acessibilidade — para todos.
       </p>
       <div class="btn-group">
-        <a href="#portfolio" class="btn-primary">Ver Portfólio</a>
-        <a href="#contato" class="btn-outline">Fale Conosco</a>
+        <a href="#portfolio" class="btn-primary" aria-label="Ver nosso portfólio de projetos">Ver Portfólio</a>
+        <a href="#contato" class="btn-outline" aria-label="Entrar em contato e solicitar orçamento">Fale Conosco</a>
       </div>
       <div class="hero-line" aria-hidden="true"></div>
     </div>
@@ -1274,15 +1311,15 @@
         <form onsubmit="enviarEmail(event)" novalidate aria-label="Formulário de contato">
           <div class="form-group">
             <label for="nome">Seu Nome</label>
-            <input type="text" id="nome" name="nome" placeholder="Como podemos te chamar?" required autocomplete="name" />
+            <input type="text" id="nome" name="nome" placeholder="Como podemos te chamar?" required aria-required="true" aria-describedby="form-feedback" autocomplete="name" />
           </div>
           <div class="form-group">
             <label for="email">E-mail</label>
-            <input type="email" id="email" name="email" placeholder="seu@email.com" required autocomplete="email" />
+            <input type="email" id="email" name="email" placeholder="seu@email.com" required aria-required="true" aria-describedby="form-feedback" autocomplete="email" />
           </div>
           <div class="form-group">
             <label for="tipo">Tipo de Projeto</label>
-            <select id="tipo" name="tipo" required>
+            <select id="tipo" name="tipo" required aria-required="true" aria-describedby="form-feedback">
               <option value="" disabled selected>Selecione o tipo</option>
               <option value="Comercial">Comercial</option>
               <option value="Institucional">Institucional</option>
@@ -1292,10 +1329,10 @@
           </div>
           <div class="form-group">
             <label for="mensagem">Mensagem</label>
-            <textarea id="mensagem" name="mensagem" placeholder="Conte um pouco sobre o seu projeto..." required></textarea>
+            <textarea id="mensagem" name="mensagem" placeholder="Conte um pouco sobre o seu projeto..." required aria-required="true" aria-describedby="form-feedback"></textarea>
           </div>
-          <button type="submit" id="form-btn" class="btn-primary" style="width:100%">Enviar Mensagem</button>
-          <div id="form-feedback" role="alert" aria-live="polite" style="display:none;margin-top:16px;padding:14px 18px;border-radius:4px;font-size:0.9rem;text-align:center;"></div>
+          <button type="submit" id="form-btn" class="btn-primary" style="width:100%" aria-label="Enviar mensagem de contato">Enviar Mensagem</button>
+          <div id="form-feedback" role="alert" aria-live="assertive" aria-atomic="true" style="display:none;margin-top:16px;padding:14px 18px;border-radius:4px;font-size:0.9rem;text-align:center;"></div>
         </form>
       </div>
     </div>
@@ -1365,6 +1402,8 @@
       </div>
     </div>
   </section>
+
+  </main>
 
   <!-- RODAPÉ -->
   <footer>
@@ -1459,23 +1498,38 @@
 
     async function enviarEmail(e) {
       e.preventDefault();
-      const nome = document.getElementById('nome').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const tipo = document.getElementById('tipo').value;
-      const mensagem = document.getElementById('mensagem').value.trim();
+      const nomeEl = document.getElementById('nome');
+      const emailEl = document.getElementById('email');
+      const tipoEl = document.getElementById('tipo');
+      const mensagemEl = document.getElementById('mensagem');
       const btn = document.getElementById('form-btn');
       const feedback = document.getElementById('form-feedback');
+
+      const nome = nomeEl.value.trim();
+      const email = emailEl.value.trim();
+      const tipo = tipoEl.value;
+      const mensagem = mensagemEl.value.trim();
+
+      nomeEl.setAttribute('aria-invalid', String(!nome));
+      emailEl.setAttribute('aria-invalid', String(!email));
+      tipoEl.setAttribute('aria-invalid', String(!tipo));
+      mensagemEl.setAttribute('aria-invalid', String(!mensagem));
 
       if (!nome || !email || !tipo || !mensagem) {
         feedback.style.display = 'block';
         feedback.style.background = 'rgba(200,50,50,0.12)';
         feedback.style.border = '1px solid rgba(200,50,50,0.4)';
         feedback.style.color = '#f08080';
-        feedback.textContent = 'Por favor, preencha todos os campos.';
+        feedback.textContent = 'Por favor, preencha todos os campos obrigatórios.';
+        var firstInvalid = [nomeEl, emailEl, tipoEl, mensagemEl].find(function(el) {
+          return el.getAttribute('aria-invalid') === 'true';
+        });
+        if (firstInvalid) firstInvalid.focus();
         return;
       }
 
       btn.disabled = true;
+      btn.setAttribute('aria-busy', 'true');
       btn.textContent = 'Enviando…';
       feedback.style.display = 'none';
 
@@ -1488,7 +1542,11 @@
 
         if (res.ok) {
           e.target.reset();
+          [nomeEl, emailEl, tipoEl, mensagemEl].forEach(function(el) {
+            el.setAttribute('aria-invalid', 'false');
+          });
           btn.textContent = 'Mensagem enviada!';
+          btn.setAttribute('aria-busy', 'false');
           feedback.style.display = 'block';
           feedback.style.background = 'rgba(201,168,76,0.1)';
           feedback.style.border = '1px solid rgba(201,168,76,0.4)';
@@ -1501,6 +1559,7 @@
         }
       } catch (err) {
         btn.disabled = false;
+        btn.setAttribute('aria-busy', 'false');
         btn.textContent = 'Enviar Mensagem';
         feedback.style.display = 'block';
         feedback.style.background = 'rgba(200,50,50,0.12)';

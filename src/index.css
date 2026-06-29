@@ -1,0 +1,196 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  A Casa & Designer — Noir & Gold design system.
+  All colors in HSL. Tokens only — no hardcoded colors in components.
+*/
+
+:root {
+  /* Surfaces — deep noir */
+  --background: 0 0% 5%;        /* #0d0d0d */
+  --foreground: 40 30% 92%;     /* warm off-white */
+
+  --card: 0 0% 10%;             /* #1a1a1a */
+  --card-foreground: 40 30% 92%;
+
+  --popover: 0 0% 10%;
+  --popover-foreground: 40 30% 92%;
+
+  /* Primary = gold */
+  --primary: 43 50% 54%;        /* #c9a84c */
+  --primary-foreground: 0 0% 5%;
+
+  /* Secondary = soft gold */
+  --secondary: 41 73% 75%;      /* #f0d78c */
+  --secondary-foreground: 0 0% 5%;
+
+  --muted: 0 0% 14%;
+  --muted-foreground: 40 12% 65%;
+
+  --accent: 43 50% 54%;
+  --accent-foreground: 0 0% 5%;
+
+  --destructive: 0 60% 50%;
+  --destructive-foreground: 40 30% 92%;
+
+  --border: 40 12% 18%;
+  --input: 0 0% 12%;
+  --ring: 43 50% 54%;
+
+  /* Brand tokens */
+  --gold: 43 50% 54%;
+  --gold-soft: 41 73% 75%;
+  --noir: 0 0% 5%;
+  --noir-elevated: 0 0% 10%;
+
+  --gradient-gold: linear-gradient(135deg, hsl(43 50% 54%), hsl(41 73% 75%));
+  --gradient-noir: linear-gradient(180deg, hsl(0 0% 5%), hsl(0 0% 8%));
+  --shadow-gold: 0 20px 60px -20px hsl(43 50% 54% / 0.35);
+  --shadow-elegant: 0 24px 64px -24px hsl(0 0% 0% / 0.7);
+
+  --radius: 0.25rem;
+  --font-size: 16px;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    box-sizing: border-box;
+  }
+
+  html {
+    font-size: var(--font-size);
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Work Sans', system-ui, sans-serif;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
+  }
+
+  h1, h2, h3, h4, h5, h6, .font-serif {
+    font-family: 'Instrument Serif', 'Times New Roman', serif;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    line-height: 1.05;
+  }
+
+  h1 { font-size: clamp(2.5rem, 6vw, 5.5rem); }
+  h2 { font-size: clamp(2rem, 4.5vw, 4rem); }
+  h3 { font-size: clamp(1.5rem, 2.5vw, 2.25rem); }
+
+  p { line-height: 1.65; }
+
+  ::selection {
+    background: hsl(var(--gold) / 0.35);
+    color: hsl(var(--foreground));
+  }
+}
+
+@layer utilities {
+  .text-gold        { color: hsl(var(--gold)); }
+  .text-gold-soft   { color: hsl(var(--gold-soft)); }
+  .bg-gold          { background-color: hsl(var(--gold)); }
+  .bg-gold-soft     { background-color: hsl(var(--gold-soft)); }
+  .border-gold      { border-color: hsl(var(--gold)); }
+  .border-gold-soft { border-color: hsl(var(--gold) / 0.3); }
+
+  .gradient-gold       { background: var(--gradient-gold); }
+  .gradient-gold-text  {
+    background: var(--gradient-gold);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .shadow-elegant { box-shadow: var(--shadow-elegant); }
+  .shadow-gold    { box-shadow: var(--shadow-gold); }
+
+  .gold-rule {
+    width: 4rem;
+    height: 1px;
+    background: hsl(var(--gold));
+    display: inline-block;
+  }
+
+  .gentle-animation { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+
+  /* Tracked smallcaps eyebrow */
+  .eyebrow {
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 500;
+    font-size: 0.75rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: hsl(var(--gold));
+  }
+
+  .glass-noir {
+    background: hsl(0 0% 5% / 0.65);
+    backdrop-filter: blur(20px) saturate(1.4);
+    border: 1px solid hsl(var(--gold) / 0.15);
+  }
+}
+
+/* Slow ambient animations */
+@keyframes drift-slow {
+  0%, 100% { transform: translateY(0) }
+  50%      { transform: translateY(-8px) }
+}
+.drift-slow { animation: drift-slow 9s ease-in-out infinite; }
+
+@keyframes shimmer {
+  0%   { background-position: -200% 0 }
+  100% { background-position: 200% 0 }
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: hsl(var(--background)); }
+::-webkit-scrollbar-thumb { background: hsl(var(--gold) / 0.4); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: hsl(var(--gold)); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* VLibras widget: let the plugin position itself, keep the access button small and anchored left */
+[vw] {
+  left: 16px !important;
+  right: auto !important;
+  bottom: 16px !important;
+  top: auto !important;
+  z-index: 50 !important;
+  margin: 0 !important;
+}
+
+[vw-access-button] {
+  width: 40px !important;
+  height: 40px !important;
+  left: 0 !important;
+  right: auto !important;
+}
+
+[vw-access-button]:hover,
+[vw-access-button].active:hover {
+  width: 200px !important;
+}
+
+[vw-plugin-wrapper] {
+  left: 0 !important;
+  right: auto !important;
+}
+
+
+
+

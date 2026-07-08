@@ -126,14 +126,46 @@ export function Hero() {
         >
           <span className="eyebrow">Cardápio Digital Interativo</span>
           <h1 className="font-serif text-foreground mt-6 mb-8">
-            Cardápios que <em className="text-gold-soft">encantam</em>,<br />
-            experiências que <em className="text-gold-soft">fidelizam</em>.
+            O cardápio que todo cliente consegue{' '}
+            <em className="text-gold-soft">ler</em>,{' '}
+            <em className="text-gold-soft">ouvir</em> e{' '}
+            <em className="text-gold-soft">entender</em>.
           </h1>
           <p className="text-lg md:text-xl text-foreground/70 max-w-2xl mb-10 font-light">
-            QR Code, narração por voz, VLibras, divisão de conta e chamada de
-            garçom em um só cardápio digital — feito para restaurantes que
-            cuidam de cada detalhe do atendimento.
+            Narração por voz, VLibras e QR Code num só cardápio digital —
+            porque atendimento impecável começa antes do garçom chegar à
+            mesa. Feito para restaurantes que cuidam de cada detalhe do
+            atendimento.
           </p>
+
+          <span className="block text-xs md:text-sm uppercase tracking-widest text-foreground/50 mb-5">
+            Tudo em um só cardápio digital
+          </span>
+          <div className="grid sm:grid-cols-3 gap-6 md:gap-10 mb-10 max-w-3xl">
+            <div>
+              <h3 className="text-gold-soft text-sm tracking-wide mb-2">Acessibilidade para todos</h3>
+              <ul className="space-y-1 text-foreground/70 text-sm font-light">
+                <li>VLibras (Língua Brasileira de Sinais)</li>
+                <li>Narração por voz</li>
+                <li>Ajuste de fonte e alto contraste</li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-gold-soft text-sm tracking-wide mb-2">Atendimento mais rápido</h3>
+              <ul className="space-y-1 text-foreground/70 text-sm font-light">
+                <li>Chamar garçom</li>
+                <li>Acompanhar pedido em tempo real</li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-gold-soft text-sm tracking-wide mb-2">Praticidade na hora de pagar</h3>
+              <ul className="space-y-1 text-foreground/70 text-sm font-light">
+                <li>Dividir conta</li>
+                <li>Fechar conta</li>
+              </ul>
+            </div>
+          </div>
+
           <div className="flex flex-wrap items-center gap-4">
             <a
               href="#contato"

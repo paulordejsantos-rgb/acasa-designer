@@ -10,6 +10,7 @@ const navLinks = [
   { href: '#portfolio-destaques', label: 'Portfólio' },
   { href: '#processo',  label: 'Como funciona' },
   { href: '#servicos',  label: 'Recursos' },
+  { href: 'https://blog-acasaedesigner.vercel.app', label: 'Blog', external: true },
   { href: '#estudio',   label: 'Estúdio' },
   { href: '#contato',   label: 'Contato' },
 ]
@@ -63,6 +64,8 @@ export function Hero() {
                 <a
                   key={link.href}
                   href={link.href}
+                  target={link.external ? '_blank' : undefined}
+                  rel={link.external ? 'noopener noreferrer' : undefined}
                   className="text-sm text-foreground/80 hover:text-gold gentle-animation tracking-wide"
                 >
                   {link.label}
@@ -100,6 +103,8 @@ export function Hero() {
               <a
                 key={link.href}
                 href={link.href}
+                target={link.external ? '_blank' : undefined}
+                rel={link.external ? 'noopener noreferrer' : undefined}
                 onClick={() => setMenuOpen(false)}
                 className="font-serif text-3xl text-foreground hover:text-gold gentle-animation border-b border-border pb-4"
               >
